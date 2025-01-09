@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import EntryForm from './components/entryform.jsx';
 
 const App = () => {
   return (
-    <div>App</div>
+    <EntryForm />
   )
 }
 
-export default App
+export default App;
