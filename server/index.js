@@ -1,8 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import cors from "cors";
-import Verb from "./schema/entryform.js";
+import entryRouter from "./routes/entry.route.js";
 
 dotenv.config();
 
@@ -20,24 +19,10 @@ mongoose
 
 const app = express();
 app.use(express.json());
-app.use(cors());
-
-// POST route to add entries
-app.post("/entry", async (req, res) => {
-  try {
-    const { verb, root, englishMeaning, lookup } = req.body;
-
-    const newEntry = new Verb({ verb, root, englishMeaning, lookup });
-    await newEntry.save();
-
-    res.status(201).send("Entry added successfully");
-  } catch (error) {
-    console.error("Error adding entry:", error);
-    res.status(500).send("An error occurred while adding the entry");
-  }
-});
 
 // Start the server
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
+
+app.use("/server/entry", entryRouter);
