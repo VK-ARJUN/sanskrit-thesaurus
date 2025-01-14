@@ -57,90 +57,50 @@ function Edit() {
   };
 
   return (
-    <div>
+    <div className="p-3 max-w-2xl mx-auto">
       {entry ? (
         <div>
-          <h1>Edit Entry</h1>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>Verb:</label>
-              <input
-                type="text"
-                name="verb"
-                value={updatedEntry.verb || ''}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label>English Meaning:</label>
-              <input
-                type="text"
-                name="englishMeaning"
-                value={updatedEntry.englishMeaning || ''}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label>Lookup:</label>
-              <input
-                type="text"
-                name="lookup"
-                value={updatedEntry.lookup || ''}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label>Root:</label>
-              <input
-                type="text"
-                name="root"
-                value={updatedEntry.root || ''}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label>Ganam:</label>
-              <input
-                type="text"
-                name="ganam"
-                value={updatedEntry.ganam || ''}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label>Trans/Non-trans:</label>
-              <input
-                type="text"
-                name="transVerb"
-                value={updatedEntry.transVerb || ''}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label>It-Agma:</label>
-              <input
-                type="text"
-                name="ItAgma"
-                value={updatedEntry.ItAgma || ''}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label>Derivation:</label>
-              <input
-                type="text"
-                name="derivation"
-                value={updatedEntry.derivation || ''}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <button type="submit">Submit</button>
-            </div>
+          <h1 className="text-3xl font-semibold text-center my-5 text-blue-500">
+            Edit Entry
+          </h1>
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-4 bg-white shadow-md rounded-lg p-5"
+          >
+            {[
+              { label: 'Verb', name: 'verb' },
+              { label: 'English Meaning', name: 'englishMeaning' },
+              { label: 'Lookup', name: 'lookup' },
+              { label: 'Root', name: 'root' },
+              { label: 'Ganam', name: 'ganam' },
+              { label: 'Trans/Non-trans', name: 'transVerb' },
+              { label: 'It-Agma', name: 'ItAgma' },
+              { label: 'Derivation', name: 'derivation' },
+            ].map((field) => (
+              <div key={field.name} className="flex flex-col">
+                <label className="text-sm font-medium text-gray-600">
+                  {field.label}
+                </label>
+                <input
+                  type="text"
+                  name={field.name}
+                  value={updatedEntry[field.name] || ''}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded-lg p-2 mt-1 focus:outline-none focus:border-blue-400"
+                />
+              </div>
+            ))}
+
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white font-medium py-2 rounded-lg hover:opacity-90"
+            >
+              Submit
+            </button>
           </form>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p className="text-center text-gray-500">Loading...</p>
       )}
     </div>
   );

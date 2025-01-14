@@ -8,10 +8,10 @@ function View() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/server/entry/view", {
+        const response = await fetch('/server/entry/view', {
           method: 'GET',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         });
         if (!response.ok) {
@@ -20,32 +20,64 @@ function View() {
         const result = await response.json();
         setData(result); // Set the fetched data
       } catch (error) {
-        console.error("Failed to fetch data", error);
+        console.error('Failed to fetch data', error);
       }
     };
     fetchData();
   }, []);
 
   return (
-    <div>
-      {data.length > 0 ? (
-        data.map((entry, index) => (
-          <div key={index} className="border-b border-gray-300 py-4">
-            <p><strong>Verb:</strong> {entry.verb}</p>
-            <p><strong>English Meaning:</strong> {entry.englishMeaning}</p>
-            <p><strong>Lookup:</strong> {entry.lookup.join(", ")}</p>
-            <p><strong>Root:</strong> {entry.root}</p>
-            <p><strong>Ganam:</strong> {entry.ganam}</p>
-            <p><strong>Trans/Non-trans:</strong> {entry.transVerb}</p>
-            <p><strong>It-Agma:</strong> {entry.ItAgma}</p>
-            <p><strong>Derivation:</strong> {entry.derivation || "N/A"}</p>
+    <div className="p-6 max-w-5xl mx-auto">
+      <h1 className="text-4xl font-bold text-center my-6 text-blue-600">
+        Sanskrit Verbs - View Entries
+      </h1>
 
-            {/* Edit button to go to the Edit page for this entry */}
-            <button onClick={() => navigate(`/edit/${entry._id}`)}>Edit</button>
-          </div>
-        ))
+      {data.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {data.map((entry, index) => (
+            <div
+              key={index}
+              className="p-5 bg-gradient-to-r from-blue-50 to-blue-100 border border-gray-200 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
+            >
+              <h2 className="text-xl font-semibold text-blue-700 mb-3">
+                {entry.verb}
+              </h2>
+              <ul className="text-gray-700 space-y-2">
+                <li>
+                  <strong>English Meaning:</strong> {entry.englishMeaning}
+                </li>
+                <li>
+                  <strong>Lookup:</strong> {entry.lookup.join(', ')}
+                </li>
+                <li>
+                  <strong>Root:</strong> {entry.root}
+                </li>
+                <li>
+                  <strong>Ganam:</strong> {entry.ganam}
+                </li>
+                <li>
+                  <strong>Trans/Non-trans:</strong> {entry.transVerb}
+                </li>
+                <li>
+                  <strong>It-Agma:</strong> {entry.ItAgma}
+                </li>
+                <li>
+                  <strong>Derivation:</strong> {entry.derivation || 'N/A'}
+                </li>
+              </ul>
+              <button
+                onClick={() => navigate(`/edit/${entry._id}`)}
+                className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+              >
+                Edit Entry
+              </button>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p>No data available.</p>
+        <p className="text-center text-gray-500 text-lg">
+          No entries available. Add some to get started!
+        </p>
       )}
     </div>
   );
