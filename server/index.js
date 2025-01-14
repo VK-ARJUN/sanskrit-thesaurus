@@ -1,12 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 import entryRouter from "./routes/entry.route.js";
 
 dotenv.config();
 
+const MONGO = "mongodb+srv://nivedkp001:sanskrit@sanskritthesaurus.awilq.mongodb.net/SanskritThesaurus?retryWrites=true&w=majority&appName=SanskritThesaurus"
+
 mongoose
-  .connect(process.env.MONGO, {
+  .connect(MONGO, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -19,6 +22,7 @@ mongoose
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // Start the server
 app.listen(3000, () => {
