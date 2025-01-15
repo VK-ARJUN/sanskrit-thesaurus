@@ -9,16 +9,16 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative z-10">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
-            Welcome to the <span className="text-blue-500">Sanskrit Thesaurus</span>
+            Welcome to the <span className="text-blue-500">Kriyanighantu</span>
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto">
-            Discover and explore the vast richness of Sanskrit verbs, their meanings, and references in one place.
+            Thesaurus of Synonymous Sanskrit Verbs
           </p>
           <a
             href="#options"
             className="mt-8 inline-block bg-white hover:bg-blue-300 text-black font-semibold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:-translate-y-1"
           >
-            Explore Now
+             Data Entry Portal
           </a>
         </div>
       </header>

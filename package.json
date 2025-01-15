@@ -2,10 +2,10 @@
   "name": "sanskrit-thesaurus",
   "version": "1.0.0",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "nodemon server/index.js",
+    "dev": "nodemon server/index.js",
     "start": "node server/index.js"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.9.3",
+    "neo4j-driver": "^5.27.0",
     "nodemon": "^3.1.9"
   }
 }

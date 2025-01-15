@@ -5,6 +5,7 @@ import LookUpEntry from './pages/LookUpEntry';
 import Header from './components/Header';
 import View from './pages/View'
 import Edit from './pages/Edit'
+import Root from './pages/Root';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/lookup-entry" element={<LookUpEntry />} />
         <Route path='/view' element={<View />}></Route>
         <Route path='/edit/:id' element={<Edit />}></Route>
+        <Route path='/root' element={<Root />}></Route>
       </Routes>
     </BrowserRouter>
   );

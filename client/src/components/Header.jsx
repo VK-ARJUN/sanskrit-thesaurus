@@ -10,7 +10,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
         {/* Logo Section */}
         <h1 className="font-extrabold text-lg sm:text-2xl flex items-center">
-          <span className="text-blue-600 mr-1">Kriyanighandu</span>
+          <span className="text-blue-600 mr-1">Kriyanighantu</span>
         </h1>
 
         {/* Search Bar */}
@@ -64,12 +64,22 @@ export default function Header() {
             </Link>
           </li>
 
+
+          <li className="text-center sm:inline-block">
+            <Link
+              to="/root"
+              className="block py-2 px-4 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors"
+            >
+              Root Entry
+            </Link>
+          </li>
+
           <li className="text-center sm:inline-block">
             <Link
               to="/view"
               className="block py-2 px-4 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors"
             >
-              View Entry
+              View
             </Link>
           </li>
         </ul>
