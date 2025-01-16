@@ -12,6 +12,7 @@ export const addVerbEntry = async (req, res) => {
       transVerb,
       ItAgma,
       derivation,
+      example
     } = req.body;
 
     if (
@@ -35,6 +36,7 @@ export const addVerbEntry = async (req, res) => {
       transVerb,
       ItAgma,
       derivation,
+      example
     });
     await newEntry.save();
 

@@ -8,6 +8,7 @@ const verbSchema = new mongoose.Schema({
   transVerb: { type: String, required: true },
   ItAgma: { type: String, required: true },
   derivation: { type: String },
+  example:{type: String}
 });
 
 const Verb = mongoose.model("Verb", verbSchema);
