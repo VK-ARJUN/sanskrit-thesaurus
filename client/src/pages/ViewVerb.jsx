@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';  // Importing the magnifying glass icon from react-icons
+import { FaSearch } from 'react-icons/fa';
 
 function ViewVerb() {
   const [data, setData] = useState([]); // State to store fetched data
@@ -27,17 +27,32 @@ function ViewVerb() {
       }
     };
     fetchData();
-  }, []);
+  }, []); 
 
   const handleViewClick = (entry) => {
     // Toggle the expanded entry to show/hide the details
     setExpandedEntry(expandedEntry === entry ? null : entry);
   };
 
-  // Filter data based on the search term
-  const filteredData = data.filter((entry) =>
-    entry.verb.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Function to calculate match score for sorting
+  const calculateMatchScore = (entry, searchTerm) => {
+    const verbMatch = entry.verb.toLowerCase().includes(searchTerm.toLowerCase()) ? 1 : 0;
+    const meaningMatch = entry.englishMeaning?.toLowerCase().includes(searchTerm.toLowerCase()) ? 0.5 : 0;
+    const lookupMatch = entry.lookup?.join(', ')?.toLowerCase().includes(searchTerm.toLowerCase()) ? 0.5 : 0;
+
+    return verbMatch + meaningMatch + lookupMatch;
+  };
+
+  // Filter and sort data based on the search term
+  const filteredData = searchTerm
+    ? data
+        .map((entry) => ({
+          ...entry,
+          matchScore: calculateMatchScore(entry, searchTerm),
+        }))
+        .filter((entry) => entry.matchScore > 0) // Only show entries with a match score
+        .sort((a, b) => b.matchScore - a.matchScore) // Sort by match score (descending)
+    : data; // If no search term, show all data
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
