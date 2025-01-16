@@ -6,7 +6,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white text-gray-800 border-t-4 border-b-4 border-blue-400 shadow-md fixed top-0 w-full z-50">
+    <header className="bg-white text-gray-800 border-t-4 border-b-4 border-blue-400 shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
         {/* Logo Section */}
         <h1 className="font-extrabold text-lg sm:text-2xl flex items-center">

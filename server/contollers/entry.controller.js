@@ -5,38 +5,28 @@ export const addVerbEntry = async (req, res) => {
   try {
     const {
       verb,
-      englishMeaning,
       lookup,
       root,
       ganam,
       transVerb,
       ItAgma,
       derivation,
-      example
+      example,
     } = req.body;
 
-    if (
-      !verb ||
-      !root ||
-      !lookup.length ||
-      !englishMeaning ||
-      !ganam ||
-      !transVerb ||
-      !ItAgma
-    ) {
+    if (!verb || !root || !lookup.length || !ganam || !transVerb || !ItAgma) {
       return res.status(400).json({ error: "All fields are required." });
     }
 
     const newEntry = new Verb({
       verb,
-      englishMeaning,
       lookup,
       root,
       ganam,
       transVerb,
       ItAgma,
       derivation,
-      example
+      example,
     });
     await newEntry.save();
 
