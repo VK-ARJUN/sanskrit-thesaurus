@@ -8,12 +8,13 @@ function EntryForm() {
   const [transVerb, setTransVerb] = useState("");
   const [ItAgma, setItAgma] = useState("");
   const [derivation, setDerivation] = useState("");
-  const [example,setExample] = useState("");
-  const [message, setMessage] = useState({ type: "", text: "" }); // State for both success and error messages
+  const [example, setExample] = useState("");
+  const [reverseWord, setReverseWord] = useState("No"); // Added state for Reverse Word
+  const [message, setMessage] = useState({ type: "", text: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newEntry = { verb, lookup, root, ganam, transVerb, ItAgma, derivation,example };
+    const newEntry = { verb, lookup, root, ganam, transVerb, ItAgma, derivation, example, reverseWord };
 
     try {
       const res = await fetch('/server/entry/addverb', {
@@ -33,23 +34,24 @@ function EntryForm() {
         setItAgma("");
         setDerivation("");
         setExample("");
+        setReverseWord("No"); // Reset Reverse Word to default
         setMessage({ type: "success", text: "Entry added successfully!" });
-        hideMessageAfterDelay(); // Hide message after 1.2 seconds
+        hideMessageAfterDelay();
       } else {
-        setMessage({ type: "error", text: "Please fill in Mandatory fields before submitting." });
-        hideMessageAfterDelay(); // Hide message after 1.2 seconds
+        setMessage({ type: "error", text: "Please fill in mandatory fields before submitting." });
+        hideMessageAfterDelay();
       }
     } catch (error) {
       console.error("Error:", error);
       setMessage({ type: "error", text: "An unexpected error occurred." });
-      hideMessageAfterDelay(); // Hide message after 1.2 seconds
+      hideMessageAfterDelay();
     }
   };
 
   const hideMessageAfterDelay = () => {
     setTimeout(() => {
       setMessage({ type: "", text: "" });
-    }, 1200); //delay
+    }, 1200); 
   };
 
   const handleAddLookup = () => {
@@ -73,10 +75,7 @@ function EntryForm() {
           Verb Entry
         </h1>
   
-        <form
-          className="grid grid-cols-1 gap-6 md:grid-cols-2"
-          onSubmit={handleSubmit}
-        >
+        <form className="grid grid-cols-1 gap-6 md:grid-cols-2" onSubmit={handleSubmit}>
           {/* Verb Input */}
           <div>
             <label className="block text-sm font-semibold text-gray-800 mb-2">
@@ -97,10 +96,7 @@ function EntryForm() {
               Lookup
             </label>
             {lookup.map((meaning, index) => (
-              <div
-                key={index}
-                className="flex items-center space-x-3 mb-3 bg-gray-100 px-3 py-2 rounded-lg"
-              >
+              <div key={index} className="flex items-center space-x-3 mb-3 bg-gray-100 px-3 py-2 rounded-lg">
                 <input
                   placeholder={`Lookup ${index + 1}`}
                   onChange={(e) => handleLookupChange(index, e.target.value)}
@@ -196,6 +192,7 @@ function EntryForm() {
             />
           </div>
 
+          {/* Example Input */}
           <div className="col-span-1 md:col-span-2">
             <label className="block text-sm font-semibold text-gray-800 mb-2">
               Example
@@ -209,22 +206,20 @@ function EntryForm() {
             />
           </div>
 
-
+          {/* Reverse Word Dropdown */}
           <div className="col-span-1 md:col-span-2">
             <label className="block text-sm font-semibold text-gray-800 mb-2">
               Reverse Word
             </label>
             <select
-              // onChange={(e) => setReverseWord(e.target.value)} // Set the value based on selection
-              // value={rever} // Set the selected value
+              onChange={(e) => setReverseWord(e.target.value)}
+              value={reverseWord}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
             >
               <option value="No">No</option>
               <option value="Yes">Yes</option>
             </select>
           </div>
-
-
 
           {/* Message Display */}
           {message.text && (
@@ -238,7 +233,7 @@ function EntryForm() {
               {message.text}
             </div>
           )}
-  
+
           {/* Submit Button */}
           <div className="col-span-1 md:col-span-2">
             <button
@@ -247,11 +242,11 @@ function EntryForm() {
             >
               Submit
             </button>
-          </div>'
+          </div>
         </form>
       </div>
     </div>
-  );  
+  );
 };
 
 export default EntryForm;

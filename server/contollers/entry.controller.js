@@ -12,7 +12,8 @@ export const addVerbEntry = async (req, res) => {
       transVerb,
       ItAgma,
       derivation,
-      example
+      example,
+      reverseWord
     } = req.body;
 
     if (
@@ -26,6 +27,29 @@ export const addVerbEntry = async (req, res) => {
       return res.status(400).json({ error: "All fields are required." });
     }
 
+    // Handle reverseWord logic
+    if (reverseWord === "Yes") {
+      const reversedVerb = verb.split('-').reverse().join('-');
+      
+      // Create new entry for reversed verb
+      const reversedEntry = new Verb({
+        verb: reversedVerb,
+        englishMeaning, // You may need to adjust meaning if needed for the reversed word
+        lookup,
+        root,
+        ganam,
+        transVerb,
+        ItAgma,
+        derivation,
+        example,
+        reverseWord
+      });
+
+      // Save reversed verb entry into the database
+      await reversedEntry.save();
+    }
+
+    // Create normal verb entry
     const newEntry = new Verb({
       verb,
       englishMeaning,
@@ -35,8 +59,11 @@ export const addVerbEntry = async (req, res) => {
       transVerb,
       ItAgma,
       derivation,
-      example
+      example,
+      reverseWord
     });
+    
+    // Save the normal verb entry into the database
     await newEntry.save();
 
     res.status(201).send("Entry added successfully");
@@ -45,6 +72,7 @@ export const addVerbEntry = async (req, res) => {
     res.status(500).send("An error occurred while adding the entry");
   }
 };
+
 
 export const addLookupEntry = async (req, res) => {
   try {
