@@ -8,6 +8,7 @@ import Root from './pages/Root';
 import ViewHome from './pages/ViewHome';
 import ViewVerb from './pages/ViewVerb';
 import ViewLookup from './pages/ViewLookup';
+import EditLookup from './pages/EditLookup';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/lookup-entry" element={<LookUpEntry />} />
         <Route path='/view' element={<ViewHome />}></Route>
         <Route path='/edit/:id' element={<Edit />}></Route>
+        <Route path='/edit/lookup/:id' element={<EditLookup/>}></Route>
         <Route path='/root' element={<Root />}></Route>
         <Route path='/view/verb' element={<ViewVerb />}></Route>
         <Route path='/view/lookup' element={<ViewLookup />}></Route>

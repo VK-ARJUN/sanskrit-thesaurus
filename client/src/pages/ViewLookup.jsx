@@ -76,7 +76,7 @@ function ViewLookup() {
                     View
                   </button>
                   <button
-                    onClick={() => navigate(`/edit/${entry._id}`)}
+                    onClick={() => navigate(`/edit/lookup/${entry._id}`)}
                     className="text-black hover:text-blue-800 transition-colors"
                   >
                     Edit
