@@ -31,7 +31,7 @@ export default function Header() {
         >
           <li className="text-center sm:inline-block">
             <Link
-              to="/"
+              to="/home"
               className="block py-2 px-4 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
