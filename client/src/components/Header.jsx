@@ -6,8 +6,8 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white text-gray-800 border-t-4 border-b-4 border-blue-400 shadow-md">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
+    <header className="bg-white text-gray-800 border-t-4 border-b-4 border-blue-400 shadow-md w-full z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 relative">
         {/* Logo Section */}
         <h1 className="font-extrabold text-lg sm:text-2xl flex items-center">
           <span className="text-blue-600 mr-1">Kriyanighantu</span>
@@ -25,8 +25,8 @@ export default function Header() {
 
         {/* Navigation Links */}
         <ul
-          className={`absolute sm:static left-0 top-full bg-white w-full sm:w-auto sm:right-0 sm:flex sm:items-center sm:gap-6 transition-all duration-300 ease-in-out ${
-            isMenuOpen ? 'block bg-blue-50' : 'hidden'
+          className={`absolute sm:static left-0 top-full bg-white w-full sm:w-auto sm:right-0 sm:flex sm:items-center sm:gap-6 transition-all duration-300 ease-in-out z-50 ${
+            isMenuOpen ? 'block bg-blue-100' : 'hidden'
           }`}
         >
           <li className="text-center sm:inline-block">
