@@ -3,11 +3,10 @@ import Home from './pages/Home';
 import VerbEntry from './pages/VerbEntry';
 import LookUpEntry from './pages/LookUpEntry';
 import Header from './components/Header';
-import View from './pages/View'
 import Edit from './pages/Edit'
 import Root from './pages/Root';
 import ViewHome from './pages/ViewHome';
-import ViewVErb from './pages/ViewVErb';
+import ViewVerb from './pages/ViewVerb';
 import ViewLookup from './pages/ViewLookup';
 
 
@@ -22,7 +21,7 @@ const App = () => {
         <Route path='/view' element={<ViewHome />}></Route>
         <Route path='/edit/:id' element={<Edit />}></Route>
         <Route path='/root' element={<Root />}></Route>
-        <Route path='/view/verb' element={<ViewVErb />}></Route>
+        <Route path='/view/verb' element={<ViewVerb />}></Route>
         <Route path='/view/lookup' element={<ViewLookup />}></Route>
       </Routes>
     </BrowserRouter>
