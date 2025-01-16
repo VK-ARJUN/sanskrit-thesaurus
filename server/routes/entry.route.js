@@ -15,8 +15,7 @@ router.get("/view", viewEntry);
 router.get("/view/lookup",ViewLookup)
 router.get("/:id",ViewOneEntry)
 router.put("/update/:id",updateEntry)
-// router.get("/view/verb",OnlyVerb)
-// router.get("/view/lookup",onlyLookup)
+
 
 
 export default router;

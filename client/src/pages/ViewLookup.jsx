@@ -18,7 +18,7 @@ function ViewLookup() {
           throw new Error(`Error: ${response.statusText}`);
         }
         const result = await response.json();
-        setData(result); // Fixed data structure access
+        setData(result.entries); // Accessing `entries` from the response
       } catch (error) {
         console.error('Failed to fetch data', error);
       }
@@ -40,22 +40,8 @@ function ViewLookup() {
               className="p-5 bg-gradient-to-r from-green-50 to-green-100 border border-gray-200 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
             >
               <h2 className="text-xl font-semibold text-green-700 mb-3">
-                {entry.lookupWord}
+                {entry.lookup}
               </h2>
-              <ul className="text-gray-700 space-y-2">
-                <li>
-                  <strong>Meaning:</strong> {entry.meaning}
-                </li>
-                <li>
-                  <strong>Synonyms:</strong> {entry.synonyms.join(', ')}
-                </li>
-                <li>
-                  <strong>Category:</strong> {entry.category}
-                </li>
-                <li>
-                  <strong>Usage:</strong> {entry.usage || 'N/A'}
-                </li>
-              </ul>
               <button
                 onClick={() => navigate(`/edit/${entry._id}`)}
                 className="mt-4 w-full bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors"
