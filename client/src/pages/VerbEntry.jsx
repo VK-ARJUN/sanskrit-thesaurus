@@ -210,19 +210,7 @@ function EntryForm() {
           </div>
 
 
-          <div className="col-span-1 md:col-span-2">
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
-              Reverse Word
-            </label>
-            <input
-              placeholder="Enter Example"
-              onChange={(e) => setDerivation(e.target.value)}
-              value={derivation}
-              type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            />
-          </div>
-
+      
           {/* Message Display */}
           {message.text && (
             <div

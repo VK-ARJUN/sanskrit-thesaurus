@@ -19,7 +19,6 @@ export const addVerbEntry = async (req, res) => {
       !verb ||
       !root ||
       !lookup.length ||
-      !englishMeaning ||
       !ganam ||
       !transVerb ||
       !ItAgma
