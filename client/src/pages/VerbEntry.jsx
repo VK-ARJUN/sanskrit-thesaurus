@@ -214,14 +214,17 @@ function EntryForm() {
             <label className="block text-sm font-semibold text-gray-800 mb-2">
               Reverse Word
             </label>
-            <input
-              placeholder="Enter Example"
-              onChange={(e) => setDerivation(e.target.value)}
-              value={derivation}
-              type="text"
+            <select
+              // onChange={(e) => setReverseWord(e.target.value)} // Set the value based on selection
+              // value={rever} // Set the selected value
               className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            />
+            >
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
           </div>
+
+
 
           {/* Message Display */}
           {message.text && (
