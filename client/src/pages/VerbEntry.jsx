@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 function EntryForm() {  
   const [verb, setVerb] = useState("");
-  const [englishMeaning, setEnglishMeaning] = useState("");
   const [lookup, setLookup] = useState([""]);
   const [root, setRoot] = useState("");
   const [ganam, setGanam] = useState("");
@@ -13,7 +12,7 @@ function EntryForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newEntry = { verb, englishMeaning, lookup, root, ganam, transVerb, ItAgma, derivation };
+    const newEntry = { verb, lookup, root, ganam, transVerb, ItAgma, derivation };
 
     try {
       const res = await fetch('/server/entry/addverb', {
@@ -26,8 +25,7 @@ function EntryForm() {
       
       if (res.ok) {
         setVerb("");
-        setRoot("");
-        setEnglishMeaning("");    
+        setRoot("");   
         setLookup([""]);
         setGanam("");
         setTransVerb("");
@@ -91,24 +89,10 @@ function EntryForm() {
             />
           </div>
   
-          {/* English Meaning Input */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">
-              English Meaning <span className="text-red-500">*</span>
-            </label>
-            <input
-              placeholder="Enter Meaning"
-              onChange={(e) => setEnglishMeaning(e.target.value)}
-              value={englishMeaning}
-              type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            />
-          </div>
-  
           {/* Lookup Input */}
           <div className="col-span-1 md:col-span-2">
             <label className="block text-sm font-semibold text-gray-800 mb-2">
-              Lookup <span className="text-red-500">*</span>
+              Lookup
             </label>
             {lookup.map((meaning, index) => (
               <div
