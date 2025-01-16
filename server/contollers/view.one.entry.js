@@ -16,7 +16,7 @@ export const ViewOneEntry = async (req, res) => {
 
     res.json(entry);
   } catch (e) {
-    console.error(e);
+    console.error(e);   
     res.status(500).json({ error: "An error occurred while fetching the entry" });
   }
 };
