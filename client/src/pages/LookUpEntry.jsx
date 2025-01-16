@@ -95,6 +95,8 @@ function LookUpEntry() {
             />
           </div>
 
+          
+
           {/* Message Display */}
           {message.text && (
             <div
