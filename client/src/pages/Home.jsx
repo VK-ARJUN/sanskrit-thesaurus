@@ -33,35 +33,67 @@ export default function HomePage() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Verb Entry Card */}
-<div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 transform hover:-translate-y-2">
-  <h3 className="text-2xl font-bold text-gray-800 mb-4">Enter Sanskrit Verbs</h3>
-  <p className="text-gray-600 mb-6">
-    Seamlessly add new Sanskrit verbs into the thesaurus. This feature allows you to input
-    verbs along with their meanings, references, and other details for a comprehensive
-    understanding.
-  </p>
-  <Link
-    to="/verb-entry"
-    className="inline-block bg-blue-600 hover:bg-blue-900 text-white font-semibold py-2 px-6 rounded-md transition-all transform hover:-translate-y-1 text-center"
-  >
-    Go to Verb Entry <span className="text-xl ml-2">→</span>
-  </Link>
-</div>
+          <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 transform hover:-translate-y-2">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Enter Sanskrit Verbs</h3>
+            <p className="text-gray-600 mb-6">
+              Seamlessly add new Sanskrit verbs into the thesaurus. This feature allows you to input
+              verbs along with their meanings, references, and other details for a comprehensive
+              understanding.
+            </p>
+            <Link
+              to="/verb-entry"
+              className="inline-block bg-blue-600 hover:bg-blue-900 text-white font-semibold py-2 px-6 rounded-md transition-all transform hover:-translate-y-1 text-center"
+            >
+              Go to Verb Entry <span className="text-xl ml-2">→</span>
+            </Link>
+          </div>
 
-{/* Lookup Entry Card */}
-<div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 transform hover:-translate-y-2">
-  <h3 className="text-2xl font-bold text-gray-800 mb-4">Lookup Sanskrit Verbs</h3>
-  <p className="text-gray-600 mb-6">
-    Search for specific Sanskrit verbs and their meanings effortlessly. This feature helps
-    you find detailed references and usage of verbs in various contexts.
-  </p>
-  <Link
-    to="/lookup-entry"
-    className="inline-block bg-blue-600 hover:bg-blue-900 text-white font-semibold py-2 px-6 rounded-md transition-all transform hover:-translate-y-1 text-center"
-  >
-    Go to Lookup Entry <span className="text-xl ml-2">→</span>
-  </Link>
-</div>
+          {/* Lookup Entry Card */}
+          <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 transform hover:-translate-y-2">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Enter Lookups</h3>
+            <p className="text-gray-600 mb-6">
+              Seamlessly add new Sanskrit lookups into the thesaurus. This feature allows you to input
+              lookups along with their meanings, references, and other details for a comprehensive
+              understanding.
+            </p>
+            <Link
+              to="/lookup-entry"
+              className="inline-block bg-blue-600 hover:bg-blue-900 text-white font-semibold py-2 px-6 rounded-md transition-all transform hover:-translate-y-1 text-center"
+            >
+              Go to Lookup Entry <span className="text-xl ml-2">→</span>
+            </Link>
+          </div>
+
+          {/* Root Entry Card */}
+          <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 transform hover:-translate-y-2">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Enter Roots</h3>
+            <p className="text-gray-600 mb-6">
+              Seamlessly add new Sanskrit roots into the thesaurus. This feature allows you to input
+              roots along with their properties and other details for a comprehensive
+              understanding.
+            </p>
+            <Link
+              to="/root"
+              className="inline-block bg-blue-600 hover:bg-blue-900 text-white font-semibold py-2 px-6 rounded-md transition-all transform hover:-translate-y-1 text-center"
+            >
+              Go to Root Entry <span className="text-xl ml-2">→</span>
+            </Link>
+          </div>
+
+          {/* View Card */}
+          <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 transform hover:-translate-y-2">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">View</h3>
+            <p className="text-gray-600 mb-6">
+              Search for specific Sanskrit verbs and their meanings effortlessly. This feature helps
+              you find detailed references and usage of verbs in various contexts.
+            </p>
+            <Link
+              to="/view"
+              className="inline-block bg-blue-600 hover:bg-blue-900 text-white font-semibold py-2 px-6 rounded-md transition-all transform hover:-translate-y-1 text-center"
+            >
+              Go to View <span className="text-xl ml-2">→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
