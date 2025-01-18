@@ -9,21 +9,32 @@ function Login({ onLoginSuccess }) {
     const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
     const navigate = useNavigate();
 
-    // Fixed username and password
-    const fixedUsername = 'admin';
-    const fixedPassword = 'password123';
-
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-
-        // Check if the credentials match the fixed ones
-        if (username === fixedUsername && password === fixedPassword) {
-            onLoginSuccess();  // Notify parent component that login was successful
-            navigate('/home'); // Redirect to the home page
-        } else {
-            setError('Invalid username or password');
+    
+        try {
+            const response = await fetch('/server/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+    
+            const result = await response.json();
+    
+            if (response.ok) {
+                onLoginSuccess(); // Notify parent component of successful login
+                navigate('/home'); // Redirect to the home page
+            } else {
+                setError(result.message || 'Invalid login credentials');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setError('An error occurred during login. Please try again.');
         }
     };
+    
 
     return (
         <div className="min-h-screen bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center">
