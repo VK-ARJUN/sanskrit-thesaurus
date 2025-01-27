@@ -21,7 +21,7 @@ function ViewVerb() {
           throw new Error(`Error: ${response.statusText}`);
         }
         const result = await response.json();
-        setData(result); // Set the fetched data
+        setData(result.reverse()); // Reverse the data to show most recent first
       } catch (error) {
         console.error('Failed to fetch data', error);
       }
@@ -52,7 +52,7 @@ function ViewVerb() {
         }))
         .filter((entry) => entry.matchScore > 0) // Only show entries with a match score
         .sort((a, b) => b.matchScore - a.matchScore) // Sort by match score (descending)
-    : data; // If no search term, show all data
+    : data; // If no search term, show all data in reverse order (newest first)
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
@@ -104,9 +104,6 @@ function ViewVerb() {
                 <div className="text-gray-700 space-y-2">
                   <ul>
                     <li>
-                      <strong>English Meaning:</strong> {entry.englishMeaning}
-                    </li>
-                    <li>
                       <strong>Lookup:</strong> {entry.lookup.join(', ')}
                     </li>
                     <li>
@@ -123,6 +120,9 @@ function ViewVerb() {
                     </li>
                     <li>
                       <strong>Derivation:</strong> {entry.derivation || 'N/A'}
+                    </li>
+                    <li>
+                      <strong>Example:</strong> {entry.example}
                     </li>
                   </ul>
                 </div>

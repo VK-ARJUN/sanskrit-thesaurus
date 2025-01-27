@@ -100,8 +100,7 @@ export default function HomePage() {
       {/* Footer Section */}
       <footer className="bg-gray-800 text-white py-6 text-center">
         <p>
-          Crafted with care for Sanskrit enthusiasts. © {new Date().getFullYear()} Sanskrit
-          Thesaurus.
+          Crafted with care for Sanskrit enthusiasts. © {new Date().getFullYear()} Kriyanighantu.
         </p>
       </footer>
     </div>

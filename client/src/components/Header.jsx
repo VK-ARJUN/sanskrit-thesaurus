@@ -6,11 +6,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white text-gray-800 border-t-4 border-b-4 border-blue-400 shadow-md w-full z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 relative">
+    <header className="bg-white text-gray-800 border-4 border-blue-400 shadow-xl w-full z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4 relative">
         {/* Logo Section */}
-        <h1 className="font-extrabold text-lg sm:text-2xl flex items-center">
-          <span className="text-blue-600 mr-1">Kriyanighantu</span>
+        <h1 className="font-extrabold text-xl sm:text-2xl flex items-center">
+          <span className="text-blue-600 mr-2">Kriyanighantu</span>
         </h1>
 
         {/* Hamburger Menu for Mobile */}
@@ -25,14 +25,14 @@ export default function Header() {
 
         {/* Navigation Links */}
         <ul
-          className={`absolute sm:static left-0 top-full bg-white w-full sm:w-auto sm:right-0 sm:flex sm:items-center sm:gap-6 transition-all duration-300 ease-in-out z-50 ${
+          className={`absolute sm:static left-0 top-full bg-white w-full sm:w-auto sm:right-0 sm:flex sm:items-center sm:gap-8 transition-all duration-300 ease-in-out z-50 ${
             isMenuOpen ? 'block bg-blue-100' : 'hidden'
           }`}
         >
           <li className="text-center sm:inline-block">
             <Link
               to="/home"
-              className="block py-2 px-4 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors"
+              className="block py-3 px-6 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
@@ -41,7 +41,7 @@ export default function Header() {
           <li className="text-center sm:inline-block">
             <Link
               to="/verb-entry"
-              className="block py-2 px-4 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors"
+              className="block py-3 px-6 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
               Verb Entry
@@ -50,7 +50,7 @@ export default function Header() {
           <li className="text-center sm:inline-block">
             <Link
               to="/lookup-entry"
-              className="block py-2 px-4 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors"
+              className="block py-3 px-6 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
               Lookup Entry
@@ -59,7 +59,7 @@ export default function Header() {
           <li className="text-center sm:inline-block">
             <Link
               to="/root"
-              className="block py-2 px-4 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors"
+              className="block py-3 px-6 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
               Root Entry
@@ -68,7 +68,7 @@ export default function Header() {
           <li className="text-center sm:inline-block">
             <Link
               to="/view"
-              className="block py-2 px-4 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors"
+              className="block py-3 px-6 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
               View

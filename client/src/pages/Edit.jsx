@@ -5,6 +5,7 @@ function Edit() {
   const { id } = useParams(); // Get the id from the URL
   const [entry, setEntry] = useState(null);
   const [updatedEntry, setUpdatedEntry] = useState({});
+  const [message, setMessage] = useState({ type: '', text: '' });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,8 +34,24 @@ function Edit() {
     }));
   };
 
+  const validateFields = () => {
+    const mandatoryFields = ['verb', 'root', 'ganam', 'transVerb', 'ItAgma'];
+    for (let field of mandatoryFields) {
+      if (!updatedEntry[field]) {
+        setMessage({ type: 'error', text: 'Please fill in all mandatory fields.' });
+        return false;
+      }
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateFields()) {
+      setTimeout(() => setMessage({ type: '', text: '' }), 3000);
+      return;
+    }
 
     try {
       const response = await fetch(`/server/entry/update/${id}`, {
@@ -65,35 +82,49 @@ function Edit() {
           </h1>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 bg-white shadow-md rounded-lg p-5"
+            className="flex flex-col gap-6 bg-white shadow-xl rounded-2xl p-8"
           >
             {[
-              { label: 'Verb', name: 'verb' },
-              { label: 'English Meaning', name: 'englishMeaning' },
+              { label: 'Verb', name: 'verb', required: true },
               { label: 'Lookup', name: 'lookup' },
-              { label: 'Root', name: 'root' },
-              { label: 'Ganam', name: 'ganam' },
-              { label: 'Trans/Non-trans', name: 'transVerb' },
-              { label: 'It-Agma', name: 'ItAgma' },
+              { label: 'Root', name: 'root', required: true },
+              { label: 'Ganam', name: 'ganam', required: true },
+              { label: 'Trans/Non-trans', name: 'transVerb', required: true },
+              { label: 'It-Agma', name: 'ItAgma', required: true },
               { label: 'Derivation', name: 'derivation' },
+              { label: 'Example', name: 'example' },
+              { label: 'Reverse Word', name: 'reverseWord' },
             ].map((field) => (
               <div key={field.name} className="flex flex-col">
-                <label className="text-sm font-medium text-gray-600">
+                <label className="text-sm font-semibold text-gray-800 mb-2">
                   {field.label}
+                  {field.required && <span className="text-red-500"> *</span>}
                 </label>
                 <input
                   type="text"
                   name={field.name}
                   value={updatedEntry[field.name] || ''}
                   onChange={handleChange}
-                  className="border border-gray-300 rounded-lg p-2 mt-1 focus:outline-none focus:border-blue-400"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
                 />
               </div>
             ))}
 
+            {message.text && (
+              <div
+                className={`w-full text-base font-medium text-center p-3 rounded-lg shadow-md ${
+                  message.type === 'success'
+                    ? 'text-green-600 bg-green-100'
+                    : 'text-red-600 bg-red-100'
+                }`}
+              >
+                {message.text}
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white font-medium py-2 rounded-lg hover:opacity-90"
+              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:from-blue-600 hover:to-blue-700 transition duration-300"
             >
               Submit
             </button>

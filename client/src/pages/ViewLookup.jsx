@@ -21,7 +21,7 @@ function ViewLookup() {
           throw new Error(`Error: ${response.statusText}`);
         }
         const result = await response.json();
-        setData(result.entries); // Accessing `entries` from the response
+        setData(result.entries.reverse()); // Reverse the data to show most recent first
       } catch (error) {
         console.error('Failed to fetch data', error);
       }

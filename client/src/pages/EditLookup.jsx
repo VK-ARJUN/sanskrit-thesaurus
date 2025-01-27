@@ -5,6 +5,7 @@ function EditLookup() {
   const { id } = useParams(); // Get the id from the URL
   const [entry, setEntry] = useState(null);
   const [updatedEntry, setUpdatedEntry] = useState({});
+  const [errors, setErrors] = useState({}); // To store error messages
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,8 +34,30 @@ function EditLookup() {
     }));
   };
 
+  const validate = () => {
+    let tempErrors = {};
+    if (!updatedEntry.lookup) {
+      tempErrors.lookup = 'Lookup is required';
+    }
+    if (!updatedEntry.englishMeaning) {
+      tempErrors.englishMeaning = 'English Meaning is required';
+    }
+    if (!updatedEntry.reference) {
+      tempErrors.refference = 'Reference is required';
+    }
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0; // Return true if no errors
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submit button clicked");
+
+    if (!validate()) {
+      return; // Prevent submission if validation fails
+    }
+
+    console.log(updatedEntry);
 
     try {
       const response = await fetch(`/server/entry/update/${id}`, {
@@ -44,6 +67,8 @@ function EditLookup() {
         },
         body: JSON.stringify(updatedEntry),
       });
+
+      console.log(response);
 
       if (response.ok) {
         // Redirect to the View page after successful update
@@ -70,11 +95,11 @@ function EditLookup() {
             {[ 
               { label: 'Lookup', name: 'lookup' },
               { label: 'English Meaning', name: 'englishMeaning' },
-              {label:'Refference',name:'refference'}
+              { label: 'Reference', name: 'reference' }
             ].map((field) => (
               <div key={field.name} className="flex flex-col">
                 <label className="text-sm font-medium text-gray-600">
-                  {field.label}
+                  {field.label} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -83,11 +108,14 @@ function EditLookup() {
                   onChange={handleChange}
                   className="border border-gray-300 rounded-lg p-2 mt-1 focus:outline-none focus:border-blue-400"
                 />
+                {errors[field.name] && (
+                  <span className="text-red-500 text-sm">{errors[field.name]}</span>
+                )}
               </div>
             ))}
-
+            
             <button
-              type="submit"
+              type="submit" // Submit button to update the entry
               className="w-full bg-blue-500 text-white font-medium py-2 rounded-lg hover:opacity-90"
             >
               Submit

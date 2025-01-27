@@ -15,7 +15,7 @@ export const addVerbEntry = async (req, res) => {
       reverseWord,
     } = req.body;
 
-    if (!verb || !root || !lookup.length || !ganam || !transVerb || !ItAgma) {
+    if (!verb || !root || !ganam || !transVerb || !ItAgma) {
       return res.status(400).json({ error: "All fields are required." });
     }
 
