@@ -58,7 +58,7 @@ export default function Header() {
           </li>
           <li className="text-center sm:inline-block">
             <Link
-              to="/root"
+              to="/root-entry"
               className="block py-3 px-6 text-gray-800 hover:bg-blue-100 hover:text-blue-700 sm:hover:bg-transparent sm:hover:text-blue-600 transition-colors rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >

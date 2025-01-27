@@ -92,7 +92,7 @@ function ViewLookup() {
                       <strong>English Meaning:</strong> {entry.englishMeaning}
                     </li>
                     <li>
-                      <strong>Reference:</strong> {entry.reference || 'N/A'}
+                      <strong>Reference (Bhattamalla):</strong> {entry.reference || 'N/A'}
                     </li>
                   </ul>
                 </div>

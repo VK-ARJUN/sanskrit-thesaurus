@@ -1,13 +1,18 @@
 import Verb from "../schema/verb.schema.js";
 import Lookup from "../schema/lookup.schema.js";
+import Root from "../schema/root.schema.js";
 
 export const ViewOneEntry = async (req, res) => {
   try {
     const { id } = req.params;
-    let entry = await Verb.findById(id);  // Declare with let
+    let entry = await Verb.findById(id); // Declare with let
 
     if (!entry) {
       entry = await Lookup.findById(id);
+    }
+
+    if (!entry) {
+      entry = await Root.findById(id);
     }
 
     if (!entry) {
@@ -16,7 +21,9 @@ export const ViewOneEntry = async (req, res) => {
 
     res.json(entry);
   } catch (e) {
-    console.error(e);   
-    res.status(500).json({ error: "An error occurred while fetching the entry" });
+    console.error(e);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching the entry" });
   }
 };

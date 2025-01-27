@@ -5,11 +5,13 @@ import VerbEntry from './pages/VerbEntry';
 import LookUpEntry from './pages/LookUpEntry';
 import Header from './components/Header';
 import Edit from './pages/Edit';
-import Root from './pages/Root';
+import RootEntry from './pages/RootEntry';
 import ViewHome from './pages/ViewHome';
 import ViewVerb from './pages/ViewVerb';
 import ViewLookup from './pages/ViewLookup';
+import ViewRoot from './pages/ViewRoot';
 import EditLookup from './pages/EditLookup';
+import EditRoot from './pages/EditRoot';
 import Login from './pages/Login';
 
 const App = () => {
@@ -61,12 +63,20 @@ const App = () => {
           element={<ProtectedRoute element={<EditLookup />} />} 
         />
         <Route 
-          path="/root" 
-          element={<ProtectedRoute element={<Root />} />} 
+          path="/edit/root/:id" 
+          element={<ProtectedRoute element={<EditRoot />} />}
+        />
+        <Route 
+          path="/root-entry" 
+          element={<ProtectedRoute element={<RootEntry />} />} 
         />
         <Route 
           path="/view/verb" 
           element={<ProtectedRoute element={<ViewVerb />} />} 
+        />
+        <Route 
+          path="/view/root" 
+          element={<ProtectedRoute element={<ViewRoot />} />}
         />
         <Route 
           path="/view/lookup" 

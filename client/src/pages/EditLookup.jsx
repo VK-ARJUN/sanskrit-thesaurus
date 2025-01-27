@@ -95,7 +95,7 @@ function EditLookup() {
             {[ 
               { label: 'Lookup', name: 'lookup' },
               { label: 'English Meaning', name: 'englishMeaning' },
-              { label: 'Reference', name: 'reference' }
+              { label: 'Reference (Bhattamalla)', name: 'reference' }
             ].map((field) => (
               <div key={field.name} className="flex flex-col">
                 <label className="text-sm font-medium text-gray-600">

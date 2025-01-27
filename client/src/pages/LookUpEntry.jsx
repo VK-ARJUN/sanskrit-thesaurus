@@ -83,7 +83,7 @@ function LookUpEntry() {
           {/* Reference Field */}
           <div className="mb-6">
             <label className="block text-sm font-semibold text-gray-800 mb-2">
-              Reference <span className="text-red-500">*</span>
+              Reference (Bhattamalla) <span className="text-red-500">*</span>
             </label>
             <input
               type="text"

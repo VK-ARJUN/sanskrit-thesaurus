@@ -5,12 +5,30 @@ function EntryForm() {
   const [lookup, setLookup] = useState(['']);
   const [root, setRoot] = useState("");
   const [ganam, setGanam] = useState("");
+  const [ganamIndex, setGanamIndex] = useState("");
   const [transVerb, setTransVerb] = useState("");
   const [ItAgma, setItAgma] = useState("");
   const [derivation, setDerivation] = useState("");
   const [example, setExample] = useState("");
+  const [seeAlso, setSeeAlso] = useState("");
   const [reverseWord, setReverseWord] = useState("No");
   const [message, setMessage] = useState({ type: "", text: "" });
+
+  const ganamOptions = [
+    "भ्वादि",
+    "अदादि",
+    "जुहोत्यादि",
+    "दिवादि",
+    "स्वादि",
+    "तुदादि",
+    "रुधादि",
+    "तनादि",
+    "क्र्यादि",
+    "चुरादि",
+  ];
+
+  const ItAgmaOptions = ["सेट्", "अनिट्", "वेट्"];
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,10 +37,12 @@ function EntryForm() {
       lookup,
       root,
       ganam,
+      ganamIndex,
       transVerb,
       ItAgma,
       derivation,
       example,
+      seeAlso,
       reverseWord,
     };
 
@@ -40,10 +60,12 @@ function EntryForm() {
         setLookup([""]);
         setRoot("");
         setGanam("");
+        setGanamIndex("");
         setTransVerb("");
         setItAgma("");
         setDerivation("");
         setExample("");
+        setSeeAlso("");
         setReverseWord("No");
         setMessage({ type: "success", text: "Entry added successfully!" });
         hideMessageAfterDelay();
@@ -144,16 +166,37 @@ function EntryForm() {
             />
           </div>
 
-          {/* Ganam Input */}
+          {/* Ganam Dropdown */}
           <div>
             <label className="block text-sm font-semibold text-gray-800 mb-2">
               Ganam <span className="text-red-500">*</span>
             </label>
-            <input
-              placeholder="Enter Ganam"
+            <select
               onChange={(e) => setGanam(e.target.value)}
               value={ganam}
-              type="text"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            >
+              <option value="" disabled>
+                Select Ganam
+              </option>
+              {ganamOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Ganam Index Input */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-800 mb-2">
+              Ganam Index <span className="text-red-500">*</span>
+            </label>
+            <input
+              placeholder="Enter Ganam Index"
+              onChange={(e) => setGanamIndex(e.target.value)}
+              value={ganamIndex}
+              type="number"
               className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
             />
           </div>
@@ -172,18 +215,25 @@ function EntryForm() {
             />
           </div>
 
-          {/* It-Agma Input */}
+          {/* It-Agma Dropdown */}
           <div>
             <label className="block text-sm font-semibold text-gray-800 mb-2">
               It-Agma <span className="text-red-500">*</span>
             </label>
-            <input
-              placeholder="Enter It-Agma"
+            <select
               onChange={(e) => setItAgma(e.target.value)}
               value={ItAgma}
-              type="text"
               className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            />
+            >
+              <option value="" disabled>
+                Select It-Agma
+              </option>
+              {ItAgmaOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           </div>
   
 
@@ -206,6 +256,18 @@ function EntryForm() {
               placeholder="Enter example"
               onChange={(e) => setExample(e.target.value)}
               value={example}
+              type="text"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+          </div>
+
+          {/* See Also Input */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-800 mb-2">See Also</label>
+            <input
+              placeholder="Enter see also"
+              onChange={(e) => setSeeAlso(e.target.value)}
+              value={seeAlso}
               type="text"
               className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
             />
