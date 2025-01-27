@@ -15,7 +15,7 @@
 
 ## Installation
 
-### Frontend Setup
+### Setup
 
 1. Clone the repository:
    ```bash
@@ -24,35 +24,37 @@
    
 2. Install dependencies:
    
-   - Install dependencies for the client (React app):
+- Install dependencies for the client (React app):
    Navigate to the client directory and run the following commands:
+
    ```bash
    cd client
    npm install
    
-   - Install dependencies for the server (backend):
+- Install dependencies for the server (backend):
     Now, navigate to the server directory and run:
    ```bash
    cd ../server
    npm install
    
 3. Start the client:
-   Navigate to the client folder (if not already there):
+- Navigate to the client folder (if not already there):
    ```bash
    cd client
-   Start React app:
+- Start React app:
    ```bash
    npm run dev
- The frontend will be running on http://localhost:5000.
+
+- The frontend will be running on http://localhost:5000.
  
 4. Run the backend server:
-   Navigate to the server folder (if not already there):
+- Navigate to the server folder (if not already there):
    ```bash
    cd server
-   Start the server:
+- Start the server:
    ```bash
    npm start
-The backend will be running on http://localhost:3000.
+- The backend will be running on http://localhost:3000.
 
 ## Usage
 
