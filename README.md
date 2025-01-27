@@ -1,4 +1,4 @@
-# Kriyanighantu
+# Kriyanighantu - A Sanskrit Thesaurus
 
 **Kriyanighantu** is a data entry portal designed for managing verbs, lookups, and root entries. It allows users to input, edit, and view entries related to Sanskrit verb conjugations, dictionary lookups, and root words. This project is built with **React** for the frontend and connects to a **backend** server for storing and retrieving the data.
 
@@ -19,8 +19,8 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/kriyanighantu.git
-   cd kriyanighantu
+   git clone https://github.com/VK-ARJUN/sanskrit-thesaurus-client.git
+   cd sanskrit thesaurus
 2. Install dependencies:
    ```bash
    npm install
@@ -33,8 +33,8 @@
 
 1. Clone the backend repository (if you have a separate one for the backend):
    ```bash
-   git clone https://github.com/your-username/kriyanighantu-backend.git
-   cd kriyanighantu-backend
+   git clone https://github.com/VK-ARJUN/sanskrit-thesaurus-server.git
+   cd sanskrit thesaurus
    
 2. Install backend dependencies:
    ```bash
