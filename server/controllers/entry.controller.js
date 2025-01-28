@@ -9,7 +9,7 @@ export const addVerbEntry = async (req, res) => {
       lookup,
       root,
       ganam,
-      ganamIndex,
+      rootIndex,
       transVerb,
       ItAgma,
       derivation,
@@ -18,7 +18,7 @@ export const addVerbEntry = async (req, res) => {
       seeAlso,
     } = req.body;
 
-    if (!verb || !root || !ganam || !ganamIndex || !transVerb || !ItAgma) {
+    if (!verb || !root || !ganam || !rootIndex || !transVerb || !ItAgma) {
       return res.status(400).json({ error: "All fields are required." });
     }
 
@@ -32,7 +32,7 @@ export const addVerbEntry = async (req, res) => {
         lookup,
         root,
         ganam,
-        ganamIndex,
+        rootIndex,
         transVerb,
         ItAgma,
         derivation,
@@ -51,7 +51,7 @@ export const addVerbEntry = async (req, res) => {
       lookup,
       root,
       ganam,
-      ganamIndex,
+      rootIndex,
       transVerb,
       ItAgma,
       derivation,
@@ -94,16 +94,16 @@ export const addLookupEntry = async (req, res) => {
 
 export const addRootEntry = async (req, res) => {
   try {
-    const { root, ganam, ganamIndex } = req.body;
+    const { root, ganam, rootIndex } = req.body;
 
-    if (!root || !ganam || !ganamIndex) {
+    if (!root || !ganam || !rootIndex) {
       return res.status(400).json({ error: "All fields are required." });
     }
 
     const newEntry = new Root({
       root,
       ganam,
-      ganamIndex,
+      rootIndex,
     });
     await newEntry.save();
 

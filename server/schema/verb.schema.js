@@ -5,7 +5,7 @@ const verbSchema = new mongoose.Schema({
   lookup: { type: [String] },
   root: { type: String, required: true },
   ganam: { type: String, required: true },
-  ganamIndex: { type: Number, required: true },
+  rootIndex: { type: Number, required: true },
   transVerb: { type: String, required: true },
   ItAgma: { type: String, required: true },
   derivation: { type: String },

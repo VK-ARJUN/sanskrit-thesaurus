@@ -113,7 +113,7 @@ function ViewVerb() {
                       <strong>Ganam:</strong> {entry.ganam}
                     </li>
                     <li>
-                      <strong>Ganam Index:</strong> {entry.ganamIndex}
+                      <strong>Root Index:</strong> {entry.rootIndex}
                     </li>
                     <li>
                       <strong>Trans/Non-trans:</strong> {entry.transVerb}

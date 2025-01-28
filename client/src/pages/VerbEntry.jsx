@@ -5,7 +5,7 @@ function EntryForm() {
   const [lookup, setLookup] = useState(['']);
   const [root, setRoot] = useState("");
   const [ganam, setGanam] = useState("");
-  const [ganamIndex, setGanamIndex] = useState("");
+  const [rootIndex, setRootIndex] = useState("");
   const [transVerb, setTransVerb] = useState("");
   const [ItAgma, setItAgma] = useState("");
   const [derivation, setDerivation] = useState("");
@@ -37,7 +37,7 @@ function EntryForm() {
       lookup,
       root,
       ganam,
-      ganamIndex,
+      rootIndex,
       transVerb,
       ItAgma,
       derivation,
@@ -60,7 +60,7 @@ function EntryForm() {
         setLookup([""]);
         setRoot("");
         setGanam("");
-        setGanamIndex("");
+        setRootIndex("");
         setTransVerb("");
         setItAgma("");
         setDerivation("");
@@ -187,15 +187,15 @@ function EntryForm() {
             </select>
           </div>
 
-          {/* Ganam Index Input */}
+          {/* Root Index Input */}
           <div>
             <label className="block text-sm font-semibold text-gray-800 mb-2">
-              Ganam Index <span className="text-red-500">*</span>
+              Root Index <span className="text-red-500">*</span>
             </label>
             <input
-              placeholder="Enter Ganam Index"
-              onChange={(e) => setGanamIndex(e.target.value)}
-              value={ganamIndex}
+              placeholder="Enter Root Index"
+              onChange={(e) => setRootIndex(e.target.value)}
+              value={rootIndex}
               type="number"
               className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
             />

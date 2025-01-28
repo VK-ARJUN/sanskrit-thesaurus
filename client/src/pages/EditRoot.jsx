@@ -57,8 +57,8 @@ function EditRoot() {
     if (!updatedEntry.ganam) {
       tempErrors.ganam = 'Ganam is required';
     }
-    if (updatedEntry.ganamIndex == null || updatedEntry.ganamIndex === '') {
-      tempErrors.ganamIndex = 'Ganam Index is required';
+    if (updatedEntry.rootIndex == null || updatedEntry.rootIndex === '') {
+      tempErrors.rootIndex = 'Root Index is required';
     }
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0; // Return true if no errors
@@ -104,7 +104,7 @@ function EditRoot() {
           >
             {[
               { label: 'Root', name: 'root' },
-              { label: 'Ganam Index', name: 'ganamIndex', type: 'number' },
+              { label: 'Root Index', name: 'rootIndex', type: 'number' },
             ].map((field) => (
               <div key={field.name} className="flex flex-col">
                 <label className="text-sm font-medium text-gray-600">

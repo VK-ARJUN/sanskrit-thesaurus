@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function RootEntry() {
   const [root, setRoot] = useState("");
   const [ganam, setGanam] = useState("");
-  const [ganamIndex, setGanamIndex] = useState("");
+  const [rootIndex, setRootIndex] = useState("");
   const [message, setMessage] = useState({ type: "", text: "" }); // State for both success and error messages
 
   const ganamOptions = [
@@ -21,7 +21,7 @@ function RootEntry() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newEntry = { root, ganam, ganamIndex };
+    const newEntry = { root, ganam, rootIndex };
 
     try {
       const res = await fetch("/server/entry/addroot", {
@@ -35,7 +35,7 @@ function RootEntry() {
       if (res.ok) {
         setRoot("");
         setGanam("");
-        setGanamIndex("");
+        setRootIndex("");
         setMessage({ type: "success", text: "Root entry added successfully!" });
         hideMessageAfterDelay(); // Hide message after 1.2 seconds
       } else {
@@ -105,14 +105,14 @@ function RootEntry() {
           {/* Ganam Index Field */}
           <div className="mb-6">
             <label className="block text-sm font-semibold text-gray-800 mb-2">
-              Ganam Index <span className="text-red-500">*</span>
+              Root Index <span className="text-red-500">*</span>
             </label>
             <input
               type="number"
-              placeholder="Enter Ganam Index"
-              id="ganamIndex"
-              value={ganamIndex}
-              onChange={(e) => setGanamIndex(e.target.value)}
+              placeholder="Enter Root Index"
+              id="rootIndex"
+              value={rootIndex}
+              onChange={(e) => setRootIndex(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-green-400 focus:outline-none"
             />
           </div>

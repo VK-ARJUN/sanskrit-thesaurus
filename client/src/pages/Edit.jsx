@@ -52,7 +52,7 @@ function Edit() {
   };
 
   const validateFields = () => {
-    const mandatoryFields = ['verb', 'root', 'ganam', 'ganamIndex', 'transVerb', 'ItAgma'];
+    const mandatoryFields = ['verb', 'root', 'ganam', 'rootIndex', 'transVerb', 'ItAgma'];
     for (let field of mandatoryFields) {
       if (!updatedEntry[field]) {
         setMessage({ type: 'error', text: 'Please fill in all mandatory fields.' });
@@ -105,7 +105,7 @@ function Edit() {
               { label: 'Verb', name: 'verb', required: true },
               { label: 'Lookup', name: 'lookup' },
               { label: 'Root', name: 'root', required: true },
-              { label: 'Ganam Index', name: 'ganamIndex', required: true },
+              { label: 'Root Index', name: 'rootIndex', required: true },
               { label: 'Trans/Non-trans', name: 'transVerb', required: true },
               { label: 'Derivation', name: 'derivation' },
               { label: 'Example', name: 'example' },
