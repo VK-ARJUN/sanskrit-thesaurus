@@ -73,7 +73,7 @@ export default function HomePage() {
               understanding.
             </p>
             <Link
-              to="/root"
+              to="/root-entry"
               className="inline-block bg-blue-600 hover:bg-blue-900 text-white font-semibold py-2 px-6 rounded-md transition-all transform hover:-translate-y-1 text-center"
             >
               Go to Root Entry <span className="text-xl ml-2">→</span>
