@@ -3,15 +3,20 @@ import react from "@vitejs/plugin-react-swc";
 
 // https://vite.dev/config/
 export default defineConfig({
+  plugins: [react()],
   server: {
-    port: 5000,
+    watch: {
+      usePolling: true,
+    },
     proxy: {
       "/server": {
-        target: "http://localhost:3000",
+        target: "http://192.168.136.68:3000",
         secure: false,
         changeOrigin: true,
       },
     },
+    host: true,
+    strictPort: true,
+    port: 5000,
   },
-  plugins: [react()],
 });
