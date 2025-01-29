@@ -109,8 +109,8 @@ function Edit() {
               { label: 'Trans/Non-trans', name: 'transVerb', required: true },
               { label: 'Derivation', name: 'derivation' },
               { label: 'Example', name: 'example' },
-              { label: 'See Also', name: 'seeAlso' },
               { label: 'Reverse Word', name: 'reverseWord' },
+              { label: 'See Also', name: 'seeAlso' },
             ].map((field) => (
               <div key={field.name} className="flex flex-col">
                 <label className="text-sm font-semibold text-gray-800 mb-2">

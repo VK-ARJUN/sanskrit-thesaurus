@@ -72,7 +72,7 @@ function EditLookup() {
 
       if (response.ok) {
         // Redirect to the View page after successful update
-        navigate('/view');
+        navigate('/view/lookup');
       } else {
         console.error('Failed to update entry');
       }

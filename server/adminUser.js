@@ -11,7 +11,7 @@ const createAdminUser = async () => {
     }
 
     // Hash the password
-    const hashedPassword = await bcrypt.hash("password@123", 10);
+    const hashedPassword = await bcrypt.hash("admin.kriyanighantu@123", 10);
 
     // Create the admin user
     const adminUser = new User({

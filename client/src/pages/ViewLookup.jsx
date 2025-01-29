@@ -6,6 +6,7 @@ function ViewLookup() {
   const [data, setData] = useState([]); // State to store fetched data
   const [searchTerm, setSearchTerm] = useState(''); // State for the search term
   const [expandedEntry, setExpandedEntry] = useState(null); // State to manage expanded entry
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null); // State to manage the entry to delete
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,6 +39,27 @@ function ViewLookup() {
   const filteredData = data.filter((entry) =>
     entry.lookup.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleDelete = async (entryId) => {
+    const confirm = window.confirm('Are you sure you want to delete this entry?');
+    if (confirm) {
+      try {
+        const response = await fetch(`/server/entry/delete/lookup/${entryId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Failed to delete entry');
+        }
+        setData(data.filter(entry => entry._id !== entryId)); // Remove entry from state
+      } catch (error) {
+        console.error('Delete failed', error);
+      }
+    }
+    setConfirmDeleteId(null); // Reset the confirmation dialog state
+  };
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
@@ -81,6 +103,12 @@ function ViewLookup() {
                   >
                     Edit
                   </button>
+                  <button
+                    onClick={() => setConfirmDeleteId(entry._id)} // Trigger delete confirmation
+                    className="text-black hover:text-red-800 transition-colors"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
 
@@ -104,6 +132,30 @@ function ViewLookup() {
         <p className="text-center text-gray-500 text-lg">
           No lookup entries available. Add some to get started!
         </p>
+      )}
+
+      {/* Confirmation Dialog */}
+      {confirmDeleteId && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl mb-4">Confirm Deletion</h3>
+            <p>Are you sure you want to delete this entry?</p>
+            <div className="mt-4 flex justify-between">
+              <button
+                onClick={() => handleDelete(confirmDeleteId)}
+                className="bg-red-600 text-white p-2 rounded-lg hover:bg-red-700"
+              >
+                Yes, Delete
+              </button>
+              <button
+                onClick={() => setConfirmDeleteId(null)}
+                className="bg-gray-600 text-white p-2 rounded-lg hover:bg-gray-700"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

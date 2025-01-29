@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function EntryForm() {
   const [verb, setVerb] = useState("");
-  const [lookup, setLookup] = useState(['']);
+  const [lookup, setLookup] = useState("");
   const [root, setRoot] = useState("");
   const [ganam, setGanam] = useState("");
   const [rootIndex, setRootIndex] = useState("");
@@ -10,7 +10,7 @@ function EntryForm() {
   const [ItAgma, setItAgma] = useState("");
   const [derivation, setDerivation] = useState("");
   const [example, setExample] = useState("");
-  const [seeAlso, setSeeAlso] = useState("");
+  const [seeAlso, setSeeAlso] = useState(['']);
   const [reverseWord, setReverseWord] = useState("No");
   const [message, setMessage] = useState({ type: "", text: "" });
 
@@ -57,7 +57,7 @@ function EntryForm() {
 
       if (res.ok) {
         setVerb("");
-        setLookup([""]);
+        setLookup("");
         setRoot("");
         setGanam("");
         setRootIndex("");
@@ -65,7 +65,7 @@ function EntryForm() {
         setItAgma("");
         setDerivation("");
         setExample("");
-        setSeeAlso("");
+        setSeeAlso([""]);
         setReverseWord("No");
         setMessage({ type: "success", text: "Entry added successfully!" });
         hideMessageAfterDelay();
@@ -87,18 +87,18 @@ function EntryForm() {
     }, 1200);
   };
 
-  const handleAddLookup = () => {
-    setLookup([...lookup, ""]);
+  const handleAddSeeAlso = () => {
+    setSeeAlso([...seeAlso, ""]);
   };
 
-  const handleRemoveLookup = (index) => {
-    setLookup(lookup.filter((_, i) => i !== index));
+  const handleRemoveSeeAlso = (index) => {
+    setSeeAlso(seeAlso.filter((_, i) => i !== index));
   };
 
-  const handleLookupChange = (index, value) => {
-    const updatedLookup = [...lookup];
-    updatedLookup[index] = value;
-    setLookup(updatedLookup);
+  const handleSeeAlsoChange = (index, value) => {
+    const updatedSeeAlso = [...seeAlso];
+    updatedSeeAlso[index] = value;
+    setSeeAlso(updatedSeeAlso);
   };
 
   return (
@@ -123,33 +123,16 @@ function EntryForm() {
           </div>
 
           {/* Lookup Inputs */}
-          <div className="col-span-1 md:col-span-2">
-            <label className="block text-sm font-semibold text-gray-800 mb-2">Lookup</label>
-            {lookup.map((meaning, index) => (
-              <div key={index} className="flex items-center space-x-3 mb-3">
-                <input
-                  placeholder={`Lookup ${index + 1}`}
-                  onChange={(e) => handleLookupChange(index, e.target.value)}
-                  value={meaning}
-                  type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveLookup(index)}
-                  className="text-gray-500 hover:text-red-500 transition"
-                >
-                  ✕
-                </button>
-              </div>
-            ))}
-            <button
-              type="button"
-              onClick={handleAddLookup}
-              className="text-blue-600 hover:text-blue-800 text-sm font-semibold"
-            >
-              + Add Another Lookup
-            </button>
+          
+          <div>
+            <label className="block text-sm font-semibold text-gray-800 mb-2">Look Up</label>
+            <input
+              placeholder="Enter lookup"
+              onChange={(e) => setLookup(e.target.value)}
+              value={lookup}
+              type="text"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
           </div>
 
           {/* Root Input */}
@@ -261,18 +244,6 @@ function EntryForm() {
             />
           </div>
 
-          {/* See Also Input */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-2">See Also</label>
-            <input
-              placeholder="Enter see also"
-              onChange={(e) => setSeeAlso(e.target.value)}
-              value={seeAlso}
-              type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            />
-          </div>
-
           {/* Reverse Word Dropdown */}
           <div>
             <label className="block text-sm font-semibold text-gray-800 mb-2">Reverse Word</label>
@@ -286,17 +257,47 @@ function EntryForm() {
             </select>
           </div>
 
+          {/* See Also Input */}
+          <div className="col-span-1 md:col-span-2">
+            <label className="block text-sm font-semibold text-gray-800 mb-2">See Also</label>
+            {seeAlso.map((meaning, index) => (
+              <div key={index} className="flex items-center space-x-3 mb-3">
+                <input
+                  placeholder={`See Also ${index + 1}`}
+                  onChange={(e) => handleSeeAlsoChange(index, e.target.value)}
+                  value={meaning}
+                  type="text"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => handleRemoveSeeAlso(index)}
+                  className="text-gray-500 hover:text-red-500 transition"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={handleAddSeeAlso}
+              className="text-blue-600 hover:text-blue-800 text-sm font-semibold"
+            >
+              + Add Another See Also
+            </button>
+          </div>
+
           {/* Message Display */}
           {message.text && (
-            <div
-              className={`w-full text-base font-medium text-center p-3 rounded-lg shadow-md ${
-                message.type === "success"
-                  ? "text-green-600 bg-green-100"
-                  : "text-red-600 bg-red-100"
-              }`}
-            >
-              {message.text}
-            </div>
+              <div
+                className={`w-full col-span-2 text-base font-medium text-center p-3 rounded-lg shadow-md ${
+                  message.type === "success"
+                    ? "text-green-600 bg-green-100"
+                    : "text-red-600 bg-red-100"
+                }`}
+              >
+                {message.text}
+              </div>
           )}
 
           {/* Submit Button */}
@@ -309,6 +310,7 @@ function EntryForm() {
             </button>
           </div>
         </form>
+        
       </div>
     </div>
   );
