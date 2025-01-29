@@ -8,11 +8,8 @@ import createAdminUser from "./adminUser.js";
 
 dotenv.config();
 
-const MONGO =
-  "mongodb+srv://nivedkp001:sanskrit@sanskritthesaurus.awilq.mongodb.net/SanskritThesaurus?retryWrites=true&w=majority&appName=SanskritThesaurus";
-
 mongoose
-  .connect(MONGO, {
+  .connect(process.env.MONGO, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
