@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa'; // Ensure react-icons is installed
 
-export default function Header() {
+export default function Header({ onLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ export default function Header() {
 
         {/* Hamburger Menu for Mobile */}
         <button
-          className="sm:hidden text-2xl text-blue-600 focus:outline-none"
+          className="lg:hidden text-2xl text-blue-600 focus:outline-none"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle Menu"
           aria-expanded={isMenuOpen}
@@ -25,7 +25,7 @@ export default function Header() {
 
         {/* Navigation Links */}
         <ul
-          className={`absolute sm:static left-0 top-full bg-white w-full sm:w-auto sm:right-0 sm:flex sm:items-center sm:gap-8 transition-all duration-300 ease-in-out z-50 ${
+          className={`absolute lg:static left-0 top-full bg-white w-full lg:w-auto md:right-0 lg:flex lg:items-center lg:gap-8 transition-all duration-300 ease-in-out z-50 ${
             isMenuOpen ? 'block bg-blue-100' : 'hidden'
           }`}
         >
@@ -73,6 +73,14 @@ export default function Header() {
             >
               View
             </Link>
+          </li>
+          <li className="text-center sm:inline-block">
+            <button
+              onClick={onLogout}
+              className="block w-full py-3 px-6 text-gray-800 hover:bg-red-100 hover:text-red-700 sm:hover:bg-transparent sm:hover:text-red-600 transition-colors rounded-md text-center"
+            >
+              Logout
+            </button>
           </li>
         </ul>
       </div>

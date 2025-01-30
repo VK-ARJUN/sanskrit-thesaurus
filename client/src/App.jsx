@@ -22,6 +22,12 @@ const App = () => {
     setIsAuthenticated(true);
   };
 
+  //Logout
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
+  
+
   // Protected route to check if the user is authenticated
   const ProtectedRoute = ({ element }) => {
     if (isAuthenticated) {
@@ -34,7 +40,7 @@ const App = () => {
   return (
     <BrowserRouter>
       {/* Conditionally render Header based on authentication */}
-      {isAuthenticated && <Header />}
+      {isAuthenticated && <Header onLogout={handleLogout} />}
       
       <Routes>
         <Route path="/" element={<Login onLoginSuccess={handleLoginSuccess} />} />
