@@ -100,7 +100,7 @@ export default function HomePage() {
       {/* Footer Section */}
       <footer className="bg-gray-800 text-white py-6 text-center">
         <p>
-          Crafted with care for Sanskrit enthusiasts. © {new Date().getFullYear()} Kriyanighantu.
+          A collaborative project between IIIT Kottayam and CIFSS, supported by Central Sanskrit University
         </p>
       </footer>
     </div>
