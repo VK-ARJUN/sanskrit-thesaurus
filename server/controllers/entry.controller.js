@@ -24,7 +24,10 @@ export const addVerbEntry = async (req, res) => {
 
     // Handle reverseWord logic
     if (reverseWord === "Yes") {
-      const reversedVerb = verb.split("-").reverse().join("-");
+      const reversedVerb = verb
+        .match(/[\p{Letter}\p{Mark}]+/gu)
+        .reverse()
+        .join(" - ");
 
       // Create new entry for reversed verb
       const reversedEntry = new Verb({
