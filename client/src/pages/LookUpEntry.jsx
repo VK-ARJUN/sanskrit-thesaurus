@@ -26,7 +26,9 @@ function LookUpEntry() {
         setMessage({ type: "success", text: "Entry added successfully!" });
         hideMessageAfterDelay(); // Hide message after 1.2 seconds
       } else {
-        setMessage({ type: "error", text: "Please fill in Mandatory fields before submitting." });
+        const errorMessage = await res.text();
+        console.error("Error:", errorMessage);
+        setMessage({ type: "error", text: errorMessage || "An unexpected error occurred." });
         hideMessageAfterDelay(); // Hide message after 1.2 seconds
       }
     } catch (error) {

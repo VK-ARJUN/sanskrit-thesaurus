@@ -39,9 +39,11 @@ function RootEntry() {
         setMessage({ type: "success", text: "Root entry added successfully!" });
         hideMessageAfterDelay(); // Hide message after 1.2 seconds
       } else {
+        const errorMessage = await res.text();
+        console.error("Error:", errorMessage);
         setMessage({
           type: "error",
-          text: "Please fill in all mandatory fields before submitting.",
+          text: errorMessage || "An unexpected error occurred.",  
         });
         hideMessageAfterDelay();
       }

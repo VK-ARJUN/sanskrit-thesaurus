@@ -81,6 +81,14 @@ export const addLookupEntry = async (req, res) => {
       return res.status(400).json({ error: "All fields are required." });
     }
 
+    // Check if lookup already exists
+    const existingEntry = await Lookup.findOne({ lookup });
+    if (existingEntry) {
+      return res
+        .status(409)
+        .json({ error: "This lookup entry already exists." });
+    }
+
     // Ensure each phrase in englishMeaning starts with "to"
     englishMeaning = englishMeaning
       .replace(/^\(to\)\s*/, "") // Remove the initial "(to)" if present
@@ -108,6 +116,12 @@ export const addRootEntry = async (req, res) => {
 
     if (!root || !ganam || !rootIndex) {
       return res.status(400).json({ error: "All fields are required." });
+    }
+
+    // Check if root already exists
+    const existingEntry = await Root.findOne({ root });
+    if (existingEntry) {
+      return res.status(409).json({ error: "This root entry already exists." });
     }
 
     const newEntry = new Root({
