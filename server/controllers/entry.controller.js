@@ -72,11 +72,18 @@ export const addVerbEntry = async (req, res) => {
 
 export const addLookupEntry = async (req, res) => {
   try {
-    const { lookup, englishMeaning, reference } = req.body;
+    let { lookup, englishMeaning, reference } = req.body;
 
     if (!lookup || !englishMeaning || !reference) {
       return res.status(400).json({ error: "All fields are required." });
     }
+
+    // Ensure each phrase in englishMeaning starts with "to"
+    englishMeaning = englishMeaning
+      .replace(/^\(to\)\s*/, "") // Remove the initial "(to)" if present
+      .split(", ") // Split the string into an array
+      .map((phrase) => (phrase.startsWith("to") ? phrase : `to ${phrase}`)) // Add "to" if missing
+      .join(", "); // Join back into a string
 
     const newEntry = new Lookup({
       lookup,
